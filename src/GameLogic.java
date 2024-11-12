@@ -1,6 +1,6 @@
 public class GameLogic {
 
-    int Score = 0;
+    int Score;
     DictionaryChecker d = new DictionaryChecker();
     public GameLogic ()
     {
@@ -36,16 +36,24 @@ public class GameLogic {
         return untilFalse;
     }
 
-    public String wordJumble (int length, int letterFrequency)
+    public String wordJumble (int length, double letterFrequency)
     {
         double allowedDegeneracy = 0;
         int whereAreYou = 0;
         String imInTheSoupStore = "";
         for (int i = 0; i <= length;i ++)
         {
-            whereAreYou = Math.random() * 26;
+            whereAreYou = (int) (Math.random() * 98);
 
-            imInTheSoupStore += "ETAONRISHDLFCMUGYPWBVKJXZQ".charAt(whereAreYou);
+//                if (whereAreYou > allowedDegeneracy)
+//                {
+//                    whereAreYou = allowedDegeneracy;
+//                }
+
+
+            //imInTheSoupStore += "ETAONRISHDLFCMUGYPWBVKJXZQ".charAt(Math.toIntExact(Math.round(whereAreYou)));
+            imInTheSoupStore += "EEEEEEEEEEEEAAAAAAAAAIIIIIIIIIOOOOOOOONNNNNNRRRRRRTTTTTTLLLLSSSSUUUUDDDDGGGBBCCMMPPFFHHVVWWYYKJXQZ".charAt(whereAreYou);
+            allowedDegeneracy += letterFrequency;
         }
         return imInTheSoupStore;
     }
