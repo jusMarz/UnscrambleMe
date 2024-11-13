@@ -5,10 +5,11 @@ public class DictionaryChecker {
     public DictionaryChecker() {} // here to
     public boolean isAWord (String word)
     {
-        if (a.toString().contains(word))
-            return true;
-        else
-            return false;
+        return true;
+//        if (a.toString().contains(word))
+//        return true;
+//        else
+//            return false;
 //        FileWriter tempFile = new FileWriter("EveryWordInDictionaryIDK");
 //        tempFile.write();
 //
