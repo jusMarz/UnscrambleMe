@@ -1,19 +1,29 @@
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Scanner;
 public class GameLogic {
 
-    int score;
+    int gameScore;
+    int gameWordLength;
+    int gameTimeLength;
     DictionaryChecker d = new DictionaryChecker();
-    public GameLogic ()
+    public GameLogic (int wordLength, int timeLength)
     {
-        score = 0;
+        gameScore = 0;
+        gameTimeLength = wordLength;
+        gameWordLength = timeLength;
     }
 
     public int GetScore()
     {
-        return score;
+        return gameScore;
     }
+    public int GetWordLength()
+    {
+        return gameWordLength;
+    }
+    public int GetTimeLength()
+    {
+        return gameTimeLength;
+    }
+
     public int wordScore(String word)
     {   String letter;
         int wordScore = 0;
@@ -80,13 +90,13 @@ public class GameLogic {
         return imInTheSoupStore;
     }
 
-    public void playGame (int length, int timer)
+   /* public void playGame (int length, int timer)
     {
 
-        Scanner S = new Scanner(System.in);
+         Scanner S = new Scanner(System.in);
         Timer T = new Timer();
        System.out.println("Welcome to Word Jumble! Would you like to 1) See the rules 2) Play a Standard Round or 3) Play a Custom Round ? (Type 1,2 or 3)");
-       System.out.println("Alright! Your word jumble is " + length + " letters long, and you have " + timer + "seconds to enter in as many words as you can find!");
+       System.out.println("Alright! Your word jumble is " + length + " letters long, and you have " + timer + "seconds to enter in as many words as you can find!"); begone
 
        TimerTask g = new TimerTask()
         {
@@ -100,15 +110,15 @@ public class GameLogic {
                     return;  // Too late; skip this execution.
              userInput = S.nextLine();
              score += wordScore(userInput);
-             System.out.println("+" + wordScore(userInput) + " points!");
+             // System.out.println("+" + wordScore(userInput) + " points!"); nuh uh
             }
         };
 
-       System.out.println("Your word jumble is: " + wordJumble(length) + "! ENTER NOW NOW NOW NOW NOW!!!!!!!!!!!!!");
+       // System.out.println("Your word jumble is: " + wordJumble(length) + "! ENTER NOW NOW NOW NOW NOW!!!!!!!!!!!!!"); no print statements lil bro
 
        T.schedule(g,timer,timer);
-        System.out.println("YOUR DONE LIL BRO!!!!!!! Your score is!!!! " + score);
+        // System.out.println("YOUR DONE LIL BRO!!!!!!! Your score is!!!! " + score); nope
     }
-
+*/
 
 }
