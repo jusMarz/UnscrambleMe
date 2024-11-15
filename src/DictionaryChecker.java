@@ -22,10 +22,6 @@ public class DictionaryChecker {
 
         //placeholder value - implement word checker later
     }
-    public void jesusTakeTheKeyboard ()
-    {
-        System.out.println(a.toString());
-    }
 
 
 }

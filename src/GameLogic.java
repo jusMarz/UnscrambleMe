@@ -3,12 +3,14 @@ public class GameLogic {
     int gameScore;
     int gameWordLength;
     int gameTimeLength;
+    String gameWordJumble;
     DictionaryChecker d = new DictionaryChecker();
     public GameLogic (int wordLength, int timeLength)
     {
         gameScore = 0;
-        gameTimeLength = wordLength;
-        gameWordLength = timeLength;
+        gameWordLength = wordLength;
+        gameTimeLength = timeLength;
+        gameWordJumble = "";
     }
 
     public int GetScore()
@@ -22,6 +24,18 @@ public class GameLogic {
     public int GetTimeLength()
     {
         return gameTimeLength;
+    }
+    public String GetWordJumble()
+    {
+        return gameWordJumble;
+    }
+    public void IncreaseScore(int scoreUp)
+    {
+        gameScore += scoreUp;
+    }
+    public void setGameWordJumble(String jumbleSet)
+    {
+        gameWordJumble = jumbleSet;
     }
 
     public int wordScore(String word)
@@ -59,7 +73,7 @@ public class GameLogic {
                 wordScore += 10;
             }
             else
-                wordScore += -1;
+                wordScore -= 1;
         }
         return wordScore;
     }
@@ -70,7 +84,7 @@ public class GameLogic {
         untilFalse = d.isAWord(thisWord);
         for (int i = 0; (i < thisWord.length()) && (untilFalse);i ++)
         {
-            untilFalse = (inThisWordQuestionMark.contains(thisWord.substring(i,i+1)));
+            untilFalse = (inThisWordQuestionMark.contains(thisWord.substring(i,i+1).toUpperCase()));
 
         }
         return untilFalse;
@@ -78,7 +92,7 @@ public class GameLogic {
 
     public String wordJumble (int length)
     {
-        int whereAreYou = 0;
+        int whereAreYou;
         String wordString = "EEEEEEEEEEEEAAAAAAAAAIIIIIIIIIOOOOOOOONNNNNNRRRRRRTTTTTTLLLLSSSSUUUUDDDDGGGBBCCMMPPFFHHVVWWYYKJXQZ";
         String imInTheSoupStore = "";
         for (int i = 0; i <= length;i ++)
