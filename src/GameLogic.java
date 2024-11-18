@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class GameLogic {
 
     int gameScore;
@@ -5,8 +8,7 @@ public class GameLogic {
     int gameTimeLength;
     String gameWordJumble;
     DictionaryChecker d = new DictionaryChecker();
-    public GameLogic (int wordLength, int timeLength)
-    {
+    public GameLogic (int wordLength, int timeLength) throws IOException {
         gameScore = 0;
         gameWordLength = wordLength;
         gameTimeLength = timeLength;
@@ -78,13 +80,12 @@ public class GameLogic {
         return wordScore;
     }
 
-    public boolean PossibleWord(String thisWord, String inThisWordQuestionMark)
-    {
+    public boolean PossibleWord(String thisWord, String inThisWordQuestionMark) throws IOException {
         boolean untilFalse;
         untilFalse = d.isAWord(thisWord);
         for (int i = 0; (i < thisWord.length()) && (untilFalse);i ++)
         {
-            untilFalse = (inThisWordQuestionMark.contains(thisWord.substring(i,i+1).toUpperCase()));
+            untilFalse = (inThisWordQuestionMark.toUpperCase().contains(thisWord.substring(i,i+1).toUpperCase()));
 
         }
         return untilFalse;

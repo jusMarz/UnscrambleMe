@@ -1,27 +1,31 @@
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class DictionaryChecker {
-    File a = new File("C:\\Users\\BT_2S14_13\\IdeaProjects\\UnscrambleMe\\src\\wordlist");
-    public DictionaryChecker() {} // here to
-    public boolean isAWord (String word)
+    boolean isIt;
+    public DictionaryChecker() throws IOException
     {
-        return true;
-//        if (a.toString().contains(word))
-//        return true;
-//        else
-//            return false;
-//        FileWriter tempFile = new FileWriter("EveryWordInDictionaryIDK");
-//        tempFile.write();
-//
-//        if (tempFile.toString().contains(Word) )
-//        return true;
-//        else
-//            return false;
-
-
-
-        //placeholder value - implement word checker later
+        isIt = false;
     }
+//    public String toString() {
+//        return (""+isIt);
+//    }
+    BufferedReader b = new BufferedReader(new FileReader("C:/Users/BT_2S14_13/IdeaProjects/UnscrambleMe/dictionary.txt"));
 
+    public boolean isAWord(String thisWord) throws IOException {
+        for (String currentWord = b.readLine(); currentWord != null; currentWord = b.readLine())
+        {
+
+            if (currentWord.equals(thisWord.toUpperCase()))
+            {
+                isIt = true;
+                break;
+            }
+
+        }
+
+        return isIt;
+    }
 
 }
