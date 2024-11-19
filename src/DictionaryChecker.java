@@ -14,6 +14,26 @@ public class DictionaryChecker {
     BufferedReader b = new BufferedReader(new FileReader("C:/Users/BT_2S14_13/IdeaProjects/UnscrambleMe/dictionary.txt"));
 
     public boolean isAWord(String thisWord) throws IOException {
+        String debug = "I NEVER GOT SET!?!?";
+        for (String currentWord = b.readLine(); currentWord != null; currentWord = b.readLine())
+        {
+            debug = currentWord;
+            if (currentWord.equals(thisWord.toUpperCase()))
+            {
+                isIt = true;
+                {
+                    debug = currentWord;
+                    break;
+                }
+
+            }
+
+        }
+        System.out.println("Current Word: " + debug + ", the word: " + thisWord);
+        return isIt;
+    }
+    public String theReadingProcess(String thisWord) throws IOException
+    {
         for (String currentWord = b.readLine(); currentWord != null; currentWord = b.readLine())
         {
 
@@ -24,8 +44,6 @@ public class DictionaryChecker {
             }
 
         }
-
-        return isIt;
-    }
-
+    return thisWord;
+        }
 }

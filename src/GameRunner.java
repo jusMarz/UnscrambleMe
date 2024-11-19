@@ -43,50 +43,53 @@ public class GameRunner {
 
         }
 
-        GameLogic g = new GameLogic(wordLength, timeLength);
-        g.setGameWordJumble(g.wordJumble(g.gameWordLength));
-        String userInput;
-        String b = "";
 
-        System.out.println("Alright! Your word jumble is: " + g.GetWordJumble() + "\nYou have " + g.gameTimeLength/1000 + " second(s) to enter in as many words as you can find! So..");
-        Thread.sleep(500);
-        System.out.println("Get Ready..");
+        GameLogic gameLogic = new GameLogic(wordLength, timeLength);
+        gameLogic.setGameWordJumble(gameLogic.wordJumble(gameLogic.gameWordLength));
+        String userInput;
+
+
+        System.out.println("Alright! Your word jumble is: " + gameLogic.GetWordJumble() + "\nYou have " + gameLogic.gameTimeLength/1000 + " second(s) to enter in as many words as you can find! So..");
         Thread.sleep(1000);
-        System.out.println("Set..");
-        Thread.sleep(2000);
-        System.out.println("GO!");
-        for (long i2 = System.currentTimeMillis() + g.GetTimeLength(); i2 > System.currentTimeMillis();)
+        System.out.print("Get Ready..");
+        Thread.sleep(1000);
+        System.out.print("Set..");
+        Thread.sleep(1000);
+        System.out.print("GO!");
+        for (long i2 = System.currentTimeMillis() + gameLogic.GetTimeLength(); i2 > System.currentTimeMillis();)
         {
 
             userInput = s.nextLine();
 
+            for (int del = 0; del <= userInput.length(); del++)
+            {
+                System.out.print("\b");
+            }
 
-            if (!(g.GetTimeLength() > System.currentTimeMillis() - i2))
+            if (!(gameLogic.GetTimeLength() > System.currentTimeMillis() - i2))
              break;
 
-            if (g.PossibleWord(userInput, g.GetWordJumble()))
+            if (gameLogic.PossibleWord(userInput, gameLogic.GetWordJumble()))
             {
-                g.IncreaseScore(g.wordScore(userInput));
-                System.out.print("+" + g.wordScore(userInput) + " points!    ");
+                gameLogic.IncreaseScore(gameLogic.wordScore(userInput));
+                System.out.print("+" + gameLogic.wordScore(userInput) + " points!    ");
                 Thread.sleep(1000);
-                for (int del = 0; del <= ("+" + g.wordScore(userInput) + " points!    ").length(); del++)
+             /*   for (int del = 0; del <= ("+" + gameLogic.wordScore(userInput) + " points!    ").length(); del++)
                 {
-                    Thread.sleep(100);
                     System.out.print("\b");
-                }
+                } */
             }
             else
             {
                 System.out.print("No points!");
                 Thread.sleep(1000);
-                for (int del = 0; del <= "No Points!".length(); del++)
+              /*  for (int del = 0; del <= "No Points!".length(); del++)
                 {
-                    Thread.sleep(100);
                     System.out.print("\b");
-                }
+                } */
             }
         }
-        System.out.println("Times Up!\n Your score is: " + g.GetScore() + " !!!\n Your word jumble was: " + g.GetWordJumble());
+        System.out.println("Times Up!\n Your score is: " + gameLogic.GetScore() + " !!!\n Your word jumble was: " + gameLogic.GetWordJumble());
 
     }
 }
