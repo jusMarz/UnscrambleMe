@@ -7,19 +7,20 @@ public class GameRunner {
 
 
         System.out.println("Welcome to Word Jumble!");
-
         int i = 0;
         while (!((i == 2) || (i == 3)))
         {
             if (i == 1)
             {
-                System.out.println(
+                System.out.println
+                        (
                         "The rules are simple!"
-                        + "\n First, you are given a random assortment of letters, and you have to make as many words as you can by using the letters given."
-                        + "\nYou can repeat the same letter however many times you want!"
-                        + "\nThe less common each letter is, the more points you can score with each word!"
+                        + "\n First, you are given a random assortment of letters, and you have to make as many words (without repeats) as you can by using the letters given."
+                        + "\nYou can only use each letter once, so you can't spell BANANA with only BA!"
+                        + "\nThe more rare each letter is, the more points you can score with each letter!"
                         + "\nYou are also on a time limit, so make as many words as you can in the allotted time!"
-                );
+                        );
+                Thread.sleep(1000);
             }
         System.out.println("Would you like to 1) See the rules 2) Play a Standard Round or 3) Play a Custom Round ? (Type 1,2 or 3 )");
         i = Integer.parseInt(s.nextLine());
@@ -49,47 +50,37 @@ public class GameRunner {
         String userInput;
 
 
-        System.out.println("Alright! Your word jumble is: " + gameLogic.GetWordJumble() + "\nYou have " + gameLogic.gameTimeLength/1000 + " second(s) to enter in as many words as you can find! So..");
-        Thread.sleep(1000);
+
+        System.out.println("\nAlright! Your word jumble is: " + gameLogic.GetWordJumble() );
+        Thread.sleep(2000);
+        System.out.println("\nYou have " + gameLogic.gameTimeLength/1000 + " second(s) to enter in as many words as you can find when I say go! Enter 0 to give up~");
+        Thread.sleep(1500);
         System.out.print("Get Ready..");
         Thread.sleep(1000);
         System.out.print("Set..");
         Thread.sleep(1000);
-        System.out.print("GO!");
+        System.out.println("GO!");
         for (long i2 = System.currentTimeMillis() + gameLogic.GetTimeLength(); i2 > System.currentTimeMillis();)
         {
 
             userInput = s.nextLine();
-
-            for (int del = 0; del <= userInput.length(); del++)
-            {
-                System.out.print("\b");
-            }
-
-            if (!(gameLogic.GetTimeLength() > System.currentTimeMillis() - i2))
+            if (!(gameLogic.GetTimeLength() > System.currentTimeMillis() - i2) || (userInput.equals("0")))
              break;
 
             if (gameLogic.PossibleWord(userInput, gameLogic.GetWordJumble()))
             {
                 gameLogic.IncreaseScore(gameLogic.wordScore(userInput));
-                System.out.print("+" + gameLogic.wordScore(userInput) + " points!    ");
-                Thread.sleep(1000);
-             /*   for (int del = 0; del <= ("+" + gameLogic.wordScore(userInput) + " points!    ").length(); del++)
-                {
-                    System.out.print("\b");
-                } */
+                System.out.println("+" + gameLogic.wordScore(userInput) + " points!");
+                gameLogic.addInputtedWord(userInput);
+
             }
             else
             {
-                System.out.print("No points!");
-                Thread.sleep(1000);
-              /*  for (int del = 0; del <= "No Points!".length(); del++)
-                {
-                    System.out.print("\b");
-                } */
+                gameLogic.giveReasoning(userInput);
+                System.out.println("No points!");
             }
         }
-        System.out.println("Times Up!\n Your score is: " + gameLogic.GetScore() + " !!!\n Your word jumble was: " + gameLogic.GetWordJumble());
+        System.out.println("ITS OVER!\n Your score is: " + gameLogic.GetScore() + " !!!\n Your word jumble was: " + gameLogic.GetWordJumble());
 
     }
 }

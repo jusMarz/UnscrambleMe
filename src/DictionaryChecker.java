@@ -11,39 +11,40 @@ public class DictionaryChecker {
 //    public String toString() {
 //        return (""+isIt);
 //    }
-    BufferedReader b = new BufferedReader(new FileReader("C:/Users/BT_2S14_13/IdeaProjects/UnscrambleMe/dictionary.txt"));
+
+
 
     public boolean isAWord(String thisWord) throws IOException {
-        String debug = "I NEVER GOT SET!?!?";
+        BufferedReader b = new BufferedReader(new FileReader("C:/Users/BT_2S14_13/IdeaProjects/UnscrambleMe/dictionary.txt"));
+        b.mark(1763167);
         for (String currentWord = b.readLine(); currentWord != null; currentWord = b.readLine())
         {
-            debug = currentWord;
             if (currentWord.equals(thisWord.toUpperCase()))
             {
                 isIt = true;
                 {
-                    debug = currentWord;
                     break;
                 }
 
             }
 
         }
-        System.out.println("Current Word: " + debug + ", the word: " + thisWord);
+        b.reset();
         return isIt;
+
     }
-    public String theReadingProcess(String thisWord) throws IOException
-    {
-        for (String currentWord = b.readLine(); currentWord != null; currentWord = b.readLine())
-        {
-
-            if (currentWord.equals(thisWord.toUpperCase()))
-            {
-                isIt = true;
-                break;
-            }
-
-        }
-    return thisWord;
-        }
+//    public String theReadingProcess(String thisWord) throws IOException
+//    {
+//        for (String currentWord = b.readLine(); currentWord != null; currentWord = b.readLine())
+//        {
+//
+//            if (currentWord.equals(thisWord.toUpperCase()))
+//            {
+//                isIt = true;
+//                break;
+//            }
+//
+//        }
+//    return thisWord;
+//        }
 }
