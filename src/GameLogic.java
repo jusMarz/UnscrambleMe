@@ -102,7 +102,6 @@ public class GameLogic {
         boolean untilFalse;
         untilFalse = d.isAWord(thisWord);
         String letters = inThisWordQuestionMark;
-
         for (int i = 0; (i < thisWord.length()) && (untilFalse);i ++)
         {
             untilFalse = (letters.toUpperCase().contains(thisWord.substring(i,i+1).toUpperCase()));
