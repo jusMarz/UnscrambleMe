@@ -76,7 +76,7 @@ public class GameRunner {
                 }
             else
                 {
-                    gameLogic.giveReasoning(userInput);
+                    System.out.println(gameLogic.giveReasoning(userInput));
                     System.out.println("No points!");
                 }
         }
