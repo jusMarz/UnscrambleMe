@@ -26,7 +26,7 @@ public class DictionaryChecker {
     public boolean isAWord(String thisWord) throws IOException
     {
         wordValidity = false;
-        BufferedReader b = new BufferedReader(new FileReader("C:/Users/BT_2S14_13/IdeaProjects/UnscrambleMe/dictionary.txt"));
+        BufferedReader b = new BufferedReader(new FileReader("src/dictionary.txt"));
         b.mark(1763167);
         for (String currentWord = b.readLine(); currentWord != null; currentWord = b.readLine())
         {
