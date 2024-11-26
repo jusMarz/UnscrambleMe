@@ -72,7 +72,7 @@ public class GameLogic {
     }
     /**
      * This method will set the letters the user will receive.
-     * @param jumbleSet represents the string of letters the player gets to use.
+     * @param jumbleSet is a string that represents the string of letters the player gets to use.
      */
     public void setGameWordJumble(String jumbleSet)
     {
@@ -80,15 +80,15 @@ public class GameLogic {
     }
     /**
      * This method will add a word to a string of already entered words.
-     * @param word represents the user's entered word.
+     * @param word is a string represents the user's entered word.
      */
     public void addInputtedWord(String word)
     {
         userWordInputs += word.toUpperCase() + " ";
     }
     /**
-     * This method will determine the score of a certain word.
-     * @param word represents the word to be scored.
+     * This method will calculate and return the score of a certain word.
+     * @param word is a string that represents the word to be scored.
      */
     public int wordScore(String word)
     {   String letter;
@@ -129,7 +129,13 @@ public class GameLogic {
             }
         return wordScore;
     }
-
+    /**
+     * This method will determine if a word is eligible to be played.
+     * A word will be ineligible if it is: not a word, not possible with the given letters, or has already been played.
+     * Returns true if the word is eligible, false if it is not.
+     * @param thisWord is a string that represents the word to be checked.
+     * @param inThisWordQuestionMark is a string represents the letters given to the user.
+     */
     public boolean PossibleWord(String thisWord, String inThisWordQuestionMark) throws IOException
     {
         boolean untilFalse;
@@ -147,23 +153,29 @@ public class GameLogic {
         untilFalse = (untilFalse && !(GetInputtedWords().contains(" "+thisWord.toUpperCase()+" ")));
         return untilFalse;
     }
-
-    public void giveReasoning(String word) throws IOException
+    /**
+     * This method will return a string that is the reasoning a word is not eligible.
+     * @param word represents the word the user enetered that is not eligible.
+     */
+    public String giveReasoning(String word) throws IOException
     {
         if (!(d.isAWord(word)))
             {
-                System.out.print("Not a word! ");
+                return("Not a word! ");
             }
         else if(GetInputtedWords().contains(" "+word.toUpperCase()))
             {
-                System.out.print("Repeat Word! ");
+                return("Repeat Word! ");
             }
         else
             {
-                System.out.print("Not a possible word!");
+                return("Not a possible word! ");
             }
     }
-
+ /**
+     * This method will return a string that is the randomly chosen letters that will be given to the player.
+     * @param length represents the number of letters the user will be given.
+     */
     public String wordJumble (int length)
     {
         int letter;
